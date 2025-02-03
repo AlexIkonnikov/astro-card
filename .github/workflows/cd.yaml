@@ -39,11 +39,8 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan ${{secrets.HOST}} >> ~/.ssh/known_hosts
-        # Replace 'your.remote.server' with your server's hostname or IP
 
       # Step 7: Deploy to remote server
       - name: Deploy to remote server
         run: |
           scp -r ./dist/ ${{secrets.USERNAME}}@${{secrets.HOST}}:/var/www/resume
-        # Replace 'user' with your server's username and '/path/to/deploy/' with your desired deployment path
-        # Example: scp -r dist/ user@192.168.1.100:/var/www/my-site/
