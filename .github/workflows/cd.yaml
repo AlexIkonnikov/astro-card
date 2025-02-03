@@ -1,27 +1,49 @@
-name: deployment
+name: Deploy Static Site
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main  # Change this to your default branch if different
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  build-and-deploy:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: Deploy using ssh
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.PRIVATE_KEY }}
-        port: 22
-        script: |
-          cd /var/www/resume
-          git pull origin main
-          npm install
-          npm run build
+      # Step 1: Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'  # Specify the Node.js version you need
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build the project
+      - name: Build project
+        run: npm run build
+
+      # Step 5: Set up SSH agent
+      - name: Set up SSH agent
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+
+      # Step 6: Add SSH host to known_hosts
+      - name: Add SSH host to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan your.remote.server >> ~/.ssh/known_hosts
+        # Replace 'your.remote.server' with your server's hostname or IP
+
+      # Step 7: Deploy to remote server
+      - name: Deploy to remote server
+        run: |
+          scp -r ./dist/ ${{secrets.USERNAME}}@${{secrets.HOST}}:/var/www/resume
+        # Replace 'user' with your server's username and '/path/to/deploy/' with your desired deployment path
+        # Example: scp -r dist/ user@192.168.1.100:/var/www/my-site/
