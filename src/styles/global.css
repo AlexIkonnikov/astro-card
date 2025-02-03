@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  --background-color: #FAFAFA
+}
+
 @font-face {
     font-family: 'SpaceGrotesk';
     src: url('/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
@@ -26,4 +30,8 @@
 
   @theme {
     --font-sans: 'SpaceGrotesk', 'sans-serif';
+  }
+
+  body {
+    background-color: var(--background-color);
   }
