@@ -2,7 +2,7 @@
   "name": "my-resume",
   "version": "1.0.0",
   "description": "",
-  "private": "false",
+  "private": "true",
   "main": "index.js",
   "type": "module",
   "scripts": {
