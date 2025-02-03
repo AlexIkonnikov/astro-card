@@ -38,7 +38,7 @@ jobs:
       - name: Add SSH host to known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan your.remote.server >> ~/.ssh/known_hosts
+          ssh-keyscan ${{secrets.HOST}} >> ~/.ssh/known_hosts
         # Replace 'your.remote.server' with your server's hostname or IP
 
       # Step 7: Deploy to remote server
