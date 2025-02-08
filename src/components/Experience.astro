@@ -1,40 +1,29 @@
 ---
+import { getEntry } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getCollection } from 'astro:content';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const experiences = (await getCollection('experience')).filter((e) => e.id.startsWith(lang));
 ---
 
 <section class='px-4' id='experience'>
   <div class='max-w-2xl mx-auto flex-col'>
     <h1 class='text-2xl mr-auto font-bold mb-3'>{t('nav.experience')}:</h1>
-    <details class='bg-white rounded-md shadow-md p-4'>
-      <summary class='font-bold cursor-pointer'>Echo company</summary>
-      <div class='pl-4 mt-2 border-gray-300'>
-        <p class='mb-2'>Position: Web developer</p>
-        <p>
-          Technical support of existing web projects. Writing frontend/backend parts of applications
-        </p>
-      </div>
-    </details>
-
-    <details class='mt-4 bg-white rounded-md shadow-md p-4'>
-      <summary class='font-bold cursor-pointer'>Purrweb</summary>
-      <div class='pl-4 mt-2 border-gray-300'>
-        <p class='mb-2'>Position: Frontend developer</p>
-        <p>Development and support of the front-end part of web and mobile applications</p>
-      </div>
-    </details>
-
-    <details class='mt-4 bg-white rounded-md shadow-md p-4'>
-      <summary class='font-bold cursor-pointer'>LAD</summary>
-      <div class='pl-4 mt-2 border-gray-300'>
-        <p class='mb-2'>Position: React Native developer</p>
-        <p>
-          Development and support of the frontend part of mobile/TV applications written in React
-          Native. Development of native modules
-        </p>
-      </div>
-    </details>
+    {
+      experiences.map(({ data, body }, index) => (
+        <details class={`bg-white rounded-md shadow-md p-4 ${index > 0 && 'mt-4'}`}>
+          <summary class='font-bold cursor-pointer'>{data.companyName}</summary>
+          <div class='pl-4 mt-2 border-gray-300'>
+            <p class='mb-2'>
+              {t('position')}: {data.position}
+            </p>
+            <p>{body}</p>
+          </div>
+        </details>
+      ))
+    }
   </div>
 </section>

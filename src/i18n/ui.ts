@@ -13,6 +13,7 @@ export const ui = {
     "nav.contacts": "Контакты",
 
     "contact me": "Связаться со мной",
+    position: "Должность",
   },
   en: {
     "nav.about": "About",
@@ -21,5 +22,7 @@ export const ui = {
     "nav.contacts": "Contacts",
 
     "contact me": "Contact me",
+
+    position: "Position",
   },
 } as const;
