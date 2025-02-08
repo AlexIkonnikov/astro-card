@@ -1,10 +1,13 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id='tech_stack' class='p-4'>
   <div class='max-w-2xl mx-auto flex flex-col'>
-    <h1 class='text-2xl font-bold mb-4'>Tech Stack:</h1>
+    <h1 class='text-2xl font-bold mb-4'>{t('nav.stack')}:</h1>
 
     <ul class='text-sm flex start gap-4 flex-wrap items-center'>
       <li>

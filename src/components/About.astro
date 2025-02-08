@@ -1,6 +1,21 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getEntry } from 'astro:content';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const entry = await getEntry('about', lang);
+if (!entry) {
+  return;
+}
+const title = entry.data.title;
+const paragraphs = entry.body?.split('\n\n');
+---
+
 <section id='about' class='p-4 pt-20'>
   <div class='max-w-2xl mx-auto flex flex-col items-center'>
-    <h1 class='text-2xl mr-auto font-bold'>About me:</h1>
+    <h1 class='text-2xl mr-auto font-bold'>{t('nav.about')}:</h1>
     <div>
       <img
         src='img/avatar.jpg'
@@ -9,24 +24,8 @@
       />
     </div>
     <div>
-      <p class='text-xl mb-2'>Hi, I’m Aleksandr 🤚</p>
-
-      <p class='text-xl mb-2'>
-        Frontend developer specializing in web, mobile, and TV applications using cross-platform
-        technologies. My expertise lies in building seamless and high-performance user experiences
-        across different platforms.
-      </p>
-
-      <p class='text-xl mb-2'>
-        I’m passionate about creating smooth and efficient user interfaces, optimizing performance,
-        and exploring new technologies.
-      </p>
-
-      <p class='text-xl'>
-        To broaden my skill set, I’ve also experimented with backend development on Node.js, which
-        helps me better understand full-stack applications. I love solving complex UI challenges and
-        constantly improving my development approach. 🚀
-      </p>
+      <p class='text-xl mb-2'>{title}</p>
+      {paragraphs?.map((p) => <p class='text-xl mb-2'>{p}</p>)}
     </div>
   </div>
 </section>
