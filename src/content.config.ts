@@ -13,6 +13,7 @@ const experienceCollections = defineCollection({
   schema: z.object({
     companyName: z.string(),
     position: z.string(),
+    index: z.number(),
   }),
 });
 
