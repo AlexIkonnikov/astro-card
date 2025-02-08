@@ -1,7 +1,12 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const { title, url } = lang === 'en' ? { title: 'RU', url: '/' } : { title: 'EN', url: '/en' };
+---
+
 <div
   class='fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg flex z-500'
 >
-  <a class='text-sm underline' href='/'>RU</a>
-  <div class='mx-2'>|</div>
-  <a class='text-sm underline' href='/en'>EN</a>
+  <a class='text-sm underline' href={url}>{title}</a>
 </div>
