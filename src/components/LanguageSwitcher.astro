@@ -6,7 +6,22 @@ const { title, url } = lang === 'en' ? { title: 'RU', url: '/' } : { title: 'EN'
 ---
 
 <div
-  class='fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg flex z-500'
+  id='lang-switcher'
+  class='fixed bottom-4 right-4 bg-gray-800 transition-opacity duration-300 text-white px-4 py-2 rounded-full shadow-lg z-500'
 >
   <a class='text-sm underline' href={url}>{title}</a>
 </div>
+<script>
+  const ls = document.querySelector('#lang-switcher');
+  let timeoutId;
+  const handleScroll = () => {
+    ls?.classList.add('opacity-0');
+
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      ls?.classList.remove('opacity-0');
+    }, 500);
+  };
+
+  window.addEventListener('scroll', handleScroll);
+</script>
