@@ -7,7 +7,7 @@ const { title, url } = lang === 'en' ? { title: 'RU', url: '/' } : { title: 'EN'
 
 <div
   id='lang-switcher'
-  class='fixed bottom-4 opacity-100 right-4 bg-gray-800 transition-opacity duration-300 text-white px-4 py-2 rounded-full shadow-lg z-500'
+  class='fixed bottom-4 right-4 bg-gray-800 transition-opacity duration-300 text-white px-4 py-2 rounded-full shadow-lg z-500'
 >
   <a class='text-sm underline' href={url}>{title}</a>
 </div>
@@ -15,13 +15,11 @@ const { title, url } = lang === 'en' ? { title: 'RU', url: '/' } : { title: 'EN'
   const ls = document.querySelector('#lang-switcher');
   let timeoutId;
   const handleScroll = () => {
-    ls?.classList.add('opacity-0');
-    ls?.classList.remove('opacity-100');
+    ls?.classList.add('opacity-hidden');
 
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
-      ls?.classList.remove('opacity-0');
-      ls?.classList.add('opacity-100');
+      ls?.classList.remove('opacity-hidden');
     }, 500);
   };
 
