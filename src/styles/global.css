@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 :root {
   --background-color: #FAFAFA
 }
@@ -34,4 +33,9 @@
 
   body {
     background-color: var(--background-color);
+  }
+
+
+  .opacity-hidden {
+    @apply opacity-0;
   }
