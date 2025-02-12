@@ -5,7 +5,9 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<header class='bg-surface backdrop-blur-lg p-4 shadow-md fixed top-0 left-0 w-full z-50'>
+<header
+  class='bg-surface-500 dark:bg-surface-700 backdrop-blur-lg p-4 shadow-md fixed top-0 left-0 w-full z-50'
+>
   <div class='max-w-2xl mx-auto flex items-center justify-between'>
     <p class='text-on-surface text-md font-bold hidden sm:block'>Alexandr | Frontend Developer</p>
     <nav class='items-center'>
