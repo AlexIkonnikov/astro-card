@@ -1,7 +1,9 @@
 @import "tailwindcss";
-:root {
-  --background-color: #fafafa;
-}
+@import "./light.css";
+@import "./dark.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@config "./../../tailwind.config.js";
 
 @font-face {
   font-family: "SpaceGrotesk";
@@ -31,10 +33,13 @@
   --font-sans: "SpaceGrotesk", "sans-serif";
 }
 
-body {
-  background-color: var(--background-color);
-}
-
 .opacity-hidden {
   @apply opacity-0;
+}
+
+.light {
+  --color-github-icon: #181616;
+}
+.dark {
+  --color-github-icon: white;
 }

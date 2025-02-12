@@ -5,12 +5,13 @@ import { getLangFromUrl } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 
-<html class='scroll-smooth' lang={lang}>
+<html class='scroll-smooth light' lang={lang}>
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1' />
   </head>
-  <body>
+
+  <body class='bg-surface-container-low text-on-surface'>
     <slot />
   </body>
 </html>
