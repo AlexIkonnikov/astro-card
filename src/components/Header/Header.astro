@@ -1,0 +1,61 @@
+---
+import ThemeSwitch from '../ThemeSwitch/ThemeSwitch.astro';
+import { getLangFromUrl, useTranslations } from './../../i18n/utils';
+import MobileMenu from './MobileMenu.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<header
+  class='bg-surface-500 dark:bg-surface-700 backdrop-blur-lg p-4 shadow-md fixed top-0 left-0 w-full z-50'
+>
+  <div class='max-w-2xl mx-auto flex items-center justify-between'>
+    <p class='text-on-surface text-md font-bold'>Alexandr | Frontend Dev</p>
+
+    <!-- Mobile Menu Button -->
+    <div class='flex flex-row ml-auto sm:hidden'>
+      <button id='menu-toggle' class='text-on-surface focus:outline-none ml-3'>
+        <svg
+          class='w-6 h-6'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M4 6h16M4 12h16m-7 6h7'></path>
+        </svg>
+      </button>
+    </div>
+
+    <nav class='hidden sm:block'>
+      <ul class='flex items-center w-auto'>
+        <li class='mr-3 sm:mr-6'>
+          <a href='#about' class='text-on-surface underline underline-offset-4'>{t('nav.about')}</a>
+        </li>
+        <li class='mr-3 sm:mr-6'>
+          <a href='#tech_stack' class='text-on-surface underline underline-offset-4'
+            >{t('nav.stack')}</a
+          >
+        </li>
+        <li class='mr-3 sm:mr-6'>
+          <a href='#experience' class='text-on-surface underline underline-offset-4'
+            >{t('nav.experience')}</a
+          >
+        </li>
+        <li>
+          <a href='#contacts' class='text-on-surface underline underline-offset-4'
+            >{t('nav.contacts')}</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <ThemeSwitch />
+  </div>
+
+  <MobileMenu />
+</header>

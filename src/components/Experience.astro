@@ -15,13 +15,13 @@ const experiences = (await getCollection('experience'))
     <h1 class='text-2xl mr-auto font-bold mb-3'>{t('nav.experience')}:</h1>
     {
       experiences.map(({ data, body }, index) => (
-        <details class={`bg-white rounded-md shadow-md p-4 ${index > 0 && 'mt-4'}`}>
-          <summary class='font-bold cursor-pointer'>{data.companyName}</summary>
+        <details class={`bg-surface rounded-md shadow-md p-4 ${index > 0 && 'mt-4'}`}>
+          <summary class='text-on-surface font-bold cursor-pointer'>{data.companyName}</summary>
           <div class='pl-4 mt-2 border-gray-300'>
-            <p class='mb-2'>
+            <p class='text-on-surface mb-2'>
               {t('position')}: {data.position}
             </p>
-            <p>{body}</p>
+            <p class='text-on-surface'>{body}</p>
           </div>
         </details>
       ))
