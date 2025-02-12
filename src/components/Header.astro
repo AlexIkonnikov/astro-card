@@ -5,27 +5,30 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<header class='backdrop-blur-lg p-4 shadow-md fixed top-0 left-0 w-full z-50'>
+<header class='bg-surface backdrop-blur-lg p-4 shadow-md fixed top-0 left-0 w-full z-50'>
   <div class='max-w-2xl mx-auto flex items-center justify-between'>
-    <p class='text-black text-md font-bold hidden sm:block'>Alexandr | Frontend Developer</p>
+    <p class='text-on-surface text-md font-bold hidden sm:block'>Alexandr | Frontend Developer</p>
     <nav class='items-center'>
       <ul class='flex items-center w-auto'>
         <li class='mr-3 sm:mr-6'>
-          <a href='#about' class='text-black underline underline-offset-4'>{t('nav.about')}</a>
+          <a href='#about' class='text-on-surface underline underline-offset-4'>{t('nav.about')}</a>
         </li>
 
         <li class='mr-3 sm:mr-6'>
-          <a href='#tech_stack' class='text-black underline underline-offset-4'>{t('nav.stack')}</a>
+          <a href='#tech_stack' class='text-on-surface underline underline-offset-4'
+            >{t('nav.stack')}</a
+          >
         </li>
 
         <li class='mr-3 sm:mr-6'>
-          <a href='#experience' class='text-black underline underline-offset-4'
+          <a href='#experience' class='text-on-surface underline underline-offset-4'
             >{t('nav.experience')}</a
           >
         </li>
 
         <li>
-          <a href='#contacts' class='text-black underline underline-offset-4'>{t('nav.contacts')}</a
+          <a href='#contacts' class='text-on-surface underline underline-offset-4'
+            >{t('nav.contacts')}</a
           >
         </li>
       </ul>

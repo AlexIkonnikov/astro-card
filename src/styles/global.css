@@ -35,3 +35,10 @@
 .opacity-hidden {
   @apply opacity-0;
 }
+
+.light {
+  --color-github-icon: #181616;
+}
+.dark {
+  --color-github-icon: white;
+}
