@@ -4,6 +4,7 @@ dist
 build
 .cache
 .vscode
+.idea
 
 # Logs
 npm-debug.log*
