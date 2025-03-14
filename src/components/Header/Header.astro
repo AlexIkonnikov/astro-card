@@ -1,5 +1,5 @@
 ---
-import ThemeSwitch from '../ThemeSwitch/ThemeSwitch.astro';
+import ThemeSwitch from '../ThemeSwitcher/ThemeSwitcher.tsx';
 import { getLangFromUrl, useTranslations } from './../../i18n/utils';
 import MobileMenu from './MobileMenu.astro';
 
@@ -13,7 +13,6 @@ const t = useTranslations(lang);
   <div class='max-w-2xl mx-auto flex items-center justify-between'>
     <p class='text-on-surface text-md font-bold'>Alexandr | Frontend Dev</p>
 
-    <!-- Mobile Menu Button -->
     <div class='flex flex-row ml-auto sm:hidden'>
       <button id='menu-toggle' class='text-on-surface focus:outline-none ml-3'>
         <svg
@@ -54,8 +53,7 @@ const t = useTranslations(lang);
         </li>
       </ul>
     </nav>
-    <ThemeSwitch />
+    <ThemeSwitch client:only='preact' />
   </div>
-
   <MobileMenu />
 </header>
