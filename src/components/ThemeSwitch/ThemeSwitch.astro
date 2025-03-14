@@ -1,36 +1,32 @@
-<label class='flex items-center cursor-pointer'>
-  <span class='mr-2 text-sm text-gray-700 dark:text-gray-300'>🌝</span>
+<label class='ml-2 flex items-center cursor-pointer'>
   <input type='checkbox' id='theme-toggle' class='hidden' />
-  <div
-    class='w-10 h-5 bg-gray-300 dark:bg-gray-600 rounded-full p-1 flex items-center transition-all'
-  >
-    <div
-      id='circle'
-      class='w-4 h-4 bg-white dark:bg-gray-900 rounded-full shadow-md transform transition-transform duration-300 ease-in-out'
-    >
-    </div>
+  <div class='w-6 h-6 bg-gray-300 dark:bg-gray-600 rounded-full flex justify-center items-center'>
+    <span id='emoji' class='symbol text-sm text-gray-700 dark:text-gray-300'>🌙</span>
   </div>
-  <span class='ml-2 text-sm text-gray-700 dark:text-gray-300'>🌙</span>
 </label>
 <script>
+  const EMOJY = {
+    dark: '🌙',
+    light: '🌝',
+  };
+
   document.addEventListener('DOMContentLoaded', function () {
-    const circle = document.getElementById('circle') as HTMLElement;
+    const emoji = document.getElementById('emoji') as HTMLElement;
+
     const themeToggle = document.getElementById('theme-toggle') as HTMLInputElement;
     const currentTheme =
       localStorage.getItem('theme') ||
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
+    emoji.textContent = EMOJY[currentTheme];
     document.documentElement.classList.toggle('dark', currentTheme === 'dark');
     themeToggle.checked = currentTheme === 'dark';
 
-    if (currentTheme === 'dark') {
-      circle.classList.add('ml-auto');
-    }
-
     themeToggle.addEventListener('change', function () {
       const newTheme = themeToggle.checked ? 'dark' : 'light';
+
+      emoji.textContent = EMOJY[newTheme];
       document.documentElement.classList.toggle('dark', newTheme === 'dark');
-      circle.classList.toggle('ml-auto', newTheme === 'dark');
       localStorage.setItem('theme', newTheme);
     });
   });
