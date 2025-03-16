@@ -18,7 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "@tailwindcss/vite": "4.0.1",
-    "astro": "5.2.1",
+    "astro": "5.5.2",
     "motion": "^12.5.0",
     "tailwindcss": "4.0.1"
   },

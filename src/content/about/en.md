@@ -2,12 +2,8 @@
 title: Hi, my name is Alexandr! 🤚
 ---
 
-Frontend developer specializing in web, mobile, and TV applications using cross-platform
-technologies. My expertise lies in building seamless and high-performance user experiences
-across different platforms.
+Frontend developer who builds web and mobile applications with React, React Native, and TypeScript. I enjoy creating user-friendly and performant interfaces, and keeping the code clean and understandable.
 
-I’m passionate about creating smooth and efficient user interfaces, optimizing performance,
-and exploring new technologies.
+In addition to typical frontend tasks, I have also worked with CI/CD and have basic knowledge of Node.js. I am constantly learning new technologies and looking for ways to make applications faster, more user-friendly, and more reliable.
 
-To broaden my skill set, I’ve also experimented with backend development on Node.js, which
-helps me better understand full-stack applications. I love solving complex UI challenges and constantly improving my development approach. 🚀
+I love tackling complex challenges because they make development more interesting.
