@@ -6,7 +6,14 @@ const t = useTranslations(lang);
 
 <nav
   id='mobile-menu'
-  class='hidden sm:hidden absolute top-full left-0 w-full bg-surface-container-low shadow-md'
+  class='hidden sm:hidden absolute top-full left-0 w-full shadow-md bg-surface-container-low
+  bg-linear-to-r
+  from-10%
+  from-background
+  via-surface-dim
+  via-30%
+  to-primary-container
+  to-90%'
 >
   <ul class='flex flex-col items-center p-4 space-y-4'>
     <li><a href='#about' class='text-on-surface'>{t('nav.about')}</a></li>
