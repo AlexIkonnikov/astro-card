@@ -11,7 +11,18 @@ const lang = getLangFromUrl(Astro.url);
     <meta name='viewport' content='width=device-width, initial-scale=1' />
   </head>
 
-  <body class='bg-surface-container-low text-on-surface'>
+  <body
+    class=`
+  bg-surface-container-low 
+  bg-linear-to-r
+  from-10%
+  from-background
+  via-surface-dim
+  via-30%
+  to-primary-container
+  to-90%
+  text-on-surface`
+  >
     <slot />
   </body>
 </html>
