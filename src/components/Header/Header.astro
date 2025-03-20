@@ -12,8 +12,7 @@ const t = useTranslations(lang);
 >
   <div class='max-w-2xl mx-auto flex items-center justify-between'>
     <div class='flex items-center min-w-50'>
-      <p id='text' class='text-on-surface text-md font-bold'></p>
-      <blink id='blink'>|</blink>
+      <p id='text' class='text-on-surface text-md font-bold'>Alexandr | Frontend</p>
     </div>
 
     <div class='flex flex-row ml-auto sm:hidden'>
@@ -39,11 +38,11 @@ const t = useTranslations(lang);
         <li class='mr-3 sm:mr-6'>
           <a href='#about' class='text-on-surface underline underline-offset-4'>{t('nav.about')}</a>
         </li>
-        <li class='mr-3 sm:mr-6'>
+        <!-- <li class='mr-3 sm:mr-6'>
           <a href='#tech_stack' class='text-on-surface underline underline-offset-4'
             >{t('nav.stack')}</a
           >
-        </li>
+        </li> -->
         <li class='mr-3 sm:mr-6'>
           <a href='#experience' class='text-on-surface underline underline-offset-4'
             >{t('nav.experience')}</a
@@ -61,14 +60,3 @@ const t = useTranslations(lang);
 
   <MobileMenu />
 </header>
-
-<script>
-  import { animate } from 'motion';
-  import { typeText, LINES } from './typeText';
-
-  const blink = document.querySelector('#blink') as HTMLElement;
-  const text = document.querySelector('#text') as HTMLElement;
-
-  animate(blink, { opacity: [0, 1, 0] }, { duration: 1, repeat: Infinity });
-  typeText(text, LINES);
-</script>
