@@ -4,6 +4,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 @config "./../../tailwind.config.js";
+@plugin '@tailwindcss/typography';
 
 @font-face {
   font-family: "Oswald";
