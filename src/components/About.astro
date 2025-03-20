@@ -10,8 +10,6 @@ const entry = await getEntry('about', lang);
 if (!entry) {
   return;
 }
-const title = entry.data.title;
-const paragraphs = entry.body?.split('\n\n');
 ---
 
 <section id='about' class='bg-surface-container-low p-4 pt-20'>
@@ -25,8 +23,10 @@ const paragraphs = entry.body?.split('\n\n');
       />
     </div>
     <div>
-      <p class='text-on-surface text-xl mb-2'>{title}</p>
-      {paragraphs?.map((p) => <p class='text-on-surface text-xl mb-2'>{p}</p>)}
+      <p class='text-on-surface text-xl mb-2'>{entry.data.title}</p>
+      <div class='prose-p:text-on-surface prose-p:text-lg prose-p:mb-2'>
+        <slot set:html={entry.rendered?.html} />
+      </div>
     </div>
   </div>
 </section>

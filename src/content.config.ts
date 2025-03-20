@@ -11,9 +11,12 @@ const aboutCollections = defineCollection({
 const experienceCollections = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/experience" }),
   schema: z.object({
+    index: z.number(),
     companyName: z.string(),
     position: z.string(),
-    index: z.number(),
+    from: z.string(),
+    to: z.string().optional(),
+    tags: z.array(z.string()),
   }),
 });
 
