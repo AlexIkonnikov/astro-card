@@ -44,3 +44,11 @@
 .dark {
   --color-github-icon: white;
 }
+
+body {
+  @apply bg-white text-black transition-colors duration-3000;
+}
+
+.dark body {
+  @apply bg-gray-900 text-white;
+}
