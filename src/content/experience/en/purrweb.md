@@ -21,4 +21,3 @@ tags:
 - Integration with APIs and third-party services
 - Application performance optimization and user experience improvement
 - Layout and adaptation of interfaces according to design specifications
-- Code review and participation in architecture discussions
