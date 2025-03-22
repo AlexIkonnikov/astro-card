@@ -12,7 +12,7 @@ const experiences = (await getCollection('experience'))
 
 <section class='px-4' id='experience'>
   <div class='max-w-2xl mx-auto flex-col'>
-    <h1 class='text-2xl mr-auto font-bold mb-2'>{t('nav.experience')}:</h1>
+    <h1 class='text-2xl mr-auto font-bold mb-5'>{t('nav.experience')}:</h1>
     {
       experiences.map(({ data, rendered }) => {
         return (
