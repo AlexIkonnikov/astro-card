@@ -4,7 +4,6 @@ import { getEntry } from 'astro:content';
 import avatar from './../img/avatar.jpg';
 
 const lang = getLangFromUrl(Astro.url);
-
 const entry = await getEntry('about', lang);
 if (!entry) {
   return;
@@ -13,15 +12,49 @@ if (!entry) {
 
 <section
   id='about'
-  class='flex max-w-2xl mx-auto flex-col items-center text-center p-4 mt-20 max-h-screen'
+  class=`
+  flex 
+  max-w-2xl 
+  mx-auto 
+  flex-col 
+  items-center 
+  text-center 
+  p-4 
+  pt-20 
+  max-h-screen
+  opacity-0
+  `
 >
   <img
     src={avatar.src}
     alt='Vacation photo'
-    class='mb-4 w-48 h-48 md:w-120 md:h-120 rounded-full shadow-lg object-cover transform-gpu transition-transform duration-300 hover:scale-110'
+    class='mb-4 w-48 h-48 md:w-120 md:h-120 rounded-full shadow-lg object-cover'
   />
   <h2 class='text-4xl font-semibold mt-4 mb-4'>{entry.data.title}</h2>
-  <div class='prose-p:text-secondary prose-p:mb-2 prose-p:text-lg'>
+  <div class='prose-p:text-secondary prose-p:mb-2 prose-p:text-lg opacity-0'>
     <slot set:html={entry.rendered?.html} />
   </div>
 </section>
+
+<script>
+  import { inView, animate } from 'motion';
+
+  const about = document.querySelector('#about') as HTMLElement;
+  const img = document.querySelector('img') as HTMLElement;
+  const title = document.querySelector('#about h2') as HTMLElement;
+  const content = document.querySelector('#about div') as HTMLElement;
+
+  inView(about, () => {
+    animate(about, { opacity: 1 }, { duration: 1 });
+    animate(img, { x: ['20%', '0%'] }, { duration: 0.7 });
+    animate(title, { x: ['-20%', '0%'] }, { duration: 0.7 });
+    animate(content, { opacity: 1 }, { duration: 0.7 });
+
+    return () => {
+      animate(about, { opacity: 0 }, { duration: 0.1 });
+      animate(img, { x: ['0', '20%'] }, { duration: 0.1 });
+      animate(title, { x: ['0%', '-20%'] }, { duration: 0.1 });
+      animate(content, { opacity: 0 }, { duration: 0.1 });
+    };
+  });
+</script>
